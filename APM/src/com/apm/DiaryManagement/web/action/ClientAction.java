@@ -81,15 +81,20 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 			
 
 			
-			/*str.append("<table width = '50%' id = 'allPatient' cellpadding='0' cellspacing='0' class='my-table' > ");
+			str.append("<table width = '50%' id = 'allPatient' cellpadding='0' cellspacing='0' class='my-table' > ");
 			str.append("<tr>");
 			str.append("<th>Name</th> ");
+			str.append("<th>Mobile</th> ");
+			str.append("<th>Email</th> ");
+			
 			str.append("</tr>");
 			
 			for(Client client1:allPatientList){
 			str.append("<tr>");
 			String firstName= client1.getFirstName();
 			str.append("<td onclick = setClientName('"+firstName+"','"+client1.getId()+"','"+client1.getType()+"','"+client1.getTypeName()+"')>"+client1.getFirstName()+" "+client1.getLastName()+"</td>");
+			str.append("<td>"+client1.getMobNo()+"</td>");
+			str.append("<td>"+client1.getEmail()+"</td>");
 			str.append("</tr>");
 			}
 			
@@ -98,7 +103,7 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 			response.setHeader("Cache-Control", "no-cache");
 			
 			response.getWriter().write(""+str.toString()+""); 
-			*/
+			
 		}
 		catch (Exception e) {
 			// TODO: handle exception
@@ -107,7 +112,7 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 			connection.close();
 		}
 		
-		return SUCCESS;
+		return null;
 	}
 	public String manage() throws SQLException{
 		if(!verifyLogin(request)){
@@ -732,6 +737,53 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 		return "manage";
 	}
 	
+	public String searchPatient() throws Exception{
+		String searchClient = request.getParameter("searchText");
+		Connection connection = null;
+		ArrayList<Client> allPatientList = new ArrayList<Client>();
+		try{
+			connection = Connection_provider.getconnection();
+			
+			ClientDAO clientDAO = new JDBCClientDAO(connection);
+			allPatientList = clientDAO.getClient(searchClient);
+			
+			clientForm.setAllPatientList(allPatientList);
+			StringBuffer str = new StringBuffer();
+				
+			str.append("<table width = '50%' id = 'allPatient' cellpadding='0' cellspacing='0' class='my-table' > ");
+			str.append("<tr>");
+			str.append("<th>Name</th> ");
+			str.append("<th>Mobile</th> ");
+			str.append("<th>Email</th> ");
+			
+			str.append("</tr>");
+			
+			for(Client client1:allPatientList){
+			str.append("<tr>");
+			String firstName= client1.getFirstName();
+			str.append("<td onclick = setClientName('"+firstName+"','"+client1.getId()+"','"+client1.getType()+"','"+client1.getTypeName()+"')>"+client1.getFirstName()+" "+client1.getLastName()+"</td>");
+			str.append("<td>"+client1.getMobNo()+"</td>");
+			str.append("<td>"+client1.getEmail()+"</td>");
+			str.append("</tr>");
+			}
+			
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			
+			response.getWriter().write(""+str.toString()+""); 
+			
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			connection.close();
+		}
+		
+		return null;
+	}
+	
 	public String searchParticular() throws SQLException{
 		String searchClient = clientForm.getSearchText();
 		Connection connection = null;
@@ -744,6 +796,7 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 			
 			clientForm.setAllPatientList(allPatientList);
 		}
+		
 		catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -753,6 +806,83 @@ public class ClientAction extends BaseAction implements Preparable, ModelDriven<
 		return SUCCESS;
 	}
 	
+	public String savePatient() throws Exception{
+		String title = request.getParameter("title");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String gender = request.getParameter("gender");
+		String dob = request.getParameter("dob");
+		String address = request.getParameter("address");
+		String town = request.getParameter("town");
+		String county = request.getParameter("county");
+		String country = request.getParameter("country");
+		String postCode = request.getParameter("postCode");
+		String homeNo = request.getParameter("homeNo");
+		String workNo = request.getParameter("workNo");
+		String mobNo = request.getParameter("mobNo");
+		String email = request.getParameter("email");
+		String sourceOfIntro = request.getParameter("sourceOfIntro");
+		
+		Connection connection = null;
+		try{
+			
+			Client client = new Client();
+			connection = Connection_provider.getconnection();
+			ClientDAO clientDAO = new JDBCClientDAO(connection);
+			client.setTitle(title);
+			client.setFirstName(firstName);
+			client.setLastName(lastName);
+			client.setAddress(address);
+			client.setCountry(country);
+			client.setDob(dob);
+			client.setEmail(email);
+			client.setGender(gender);
+			client.setMobNo(mobNo);
+			client.setPostCode(postCode);
+			client.setSourceOfIntro(sourceOfIntro);
+			client.setTown(town);
+			client.setCounty(county);
+			client.setHomeNo(homeNo);
+			client.setWorkNo(workNo);
+			
+		
+			int result = clientDAO.savePatientDetails(client);
+			
+			ArrayList<Client> allPatientList = new ArrayList<Client>();
+			allPatientList = clientDAO.getAllPatient();
+			StringBuffer str = new StringBuffer();
+			
+			str.append("<table width = '50%' id = 'allPatient' cellpadding='0' cellspacing='0' class='my-table' > ");
+			str.append("<tr>");
+			str.append("<th>Name</th> ");
+			str.append("<th>Mobile</th> ");
+			str.append("<th>Email</th> ");
+			
+			str.append("</tr>");
+			
+			for(Client client1:allPatientList){
+			str.append("<tr>");
+			String firstName1= client1.getFirstName();
+			str.append("<td onclick = setClientName('"+firstName1+"','"+client1.getId()+"','"+client1.getType()+"','"+client1.getTypeName()+"')>"+client1.getFirstName()+" "+client1.getLastName()+"</td>");
+			str.append("<td>"+client1.getMobNo()+"</td>");
+			str.append("<td>"+client1.getEmail()+"</td>");
+			str.append("</tr>");
+			}
+			
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			
+			response.getWriter().write(""+str.toString()+""); 
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			connection.close();
+		}
+		return null;
+	}
 
 	
 	public void prepare() throws Exception {

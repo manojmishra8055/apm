@@ -639,6 +639,39 @@ public class JDBCClientDAO extends JDBCBaseDAO implements ClientDAO {
 		return result;
 	}
 
+	public int savePatientDetails(Client client) {
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "insert into apm_patient(title,firstname,surname,mobno,email,gender,dob,address,town,country,postcode,sourceofintro,county,homeNo,workNo)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+		
+			preparedStatement.setString(1, client.getTitle());
+			preparedStatement.setString(2, client.getFirstName());
+			preparedStatement.setString(3, client.getLastName());
+			preparedStatement.setString(4, client.getMobNo());
+			preparedStatement.setString(5, client.getEmail());
+			preparedStatement.setString(6, client.getGender());
+			preparedStatement.setString(7, client.getDob());
+			preparedStatement.setString(8, client.getAddress());
+			preparedStatement.setString(9, client.getTown());
+			preparedStatement.setString(10, client.getCountry());
+			preparedStatement.setString(11, client.getPostCode());
+			preparedStatement.setString(12, client.getSourceOfIntro());
+			preparedStatement.setString(13, client.getCounty());
+			preparedStatement.setString(14, client.getHomeNo());
+			preparedStatement.setString(15, client.getWorkNo());
+			
+			
+			result = preparedStatement.executeUpdate();
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	
 	
 }

@@ -26,7 +26,7 @@
             <div id="caltoolbar" class="ctoolbar">
             	
             		<table width="100%" cellpadding="0" cellspacing="0">
-            			<col width="82%"/>
+            			<col width="75%"/>
             			<col width="50%"/>
             			<tr>
             				<td>

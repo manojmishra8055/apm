@@ -1,4 +1,4 @@
-<%@taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags"  prefix="s"%>
 <script type="text/javascript" src="diarymanagement/js/completeApmt.js"></script>
 <script type="text/javascript" src="diarymanagement/js/nonavailableslot.js"></script>
 
@@ -7,17 +7,25 @@
 <script type="text/javascript" src="diarymanagement/js/subModal.js"></script>
 <link href="diarymanagement/css/tabStyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="diarymanagement/js/addPatientTab.js"></script>
+<script type="text/javascript" src="diarymanagement/js/commonAppointmentView.js"></script>
+
 
 <div class="form_elements" >	
 		
 		
-		<div id="previewDiv" style="background-color: white; top:10px;left: 100px">
-			<div id="closediv" class="close" style="display: none;"></div>
-			<span class="ecs_tooltip">Press Esc to close <span class="arrow" ></span></span>
-			<input type="hidden" name="choice"	id="choice" value="1" />
+		<div id="dashboardDiv" style="background-color: white; top:10px;left: 100px">
+		<input type="hidden" name="choice"	id="choice" value="1" />
 			
 			
-			<div id = "appointment" style="display: none;">
+			<table width="100%">
+				<col width="50%"/>
+				 <col width="50%"/>
+				
+				<tr>
+					<td>
+							<div id="closediv" class="close" style="display: none;"></div>
+							<span class="ecs_tooltip">Press Esc to close <span class="arrow" ></span></span>
+						<div id = "appointment" style="display: none;">
 										<div class="mddiv" id="apmtdiv"><font color="white" >New Appointment</font></div>
 				                        <table width="100%" style="font-size: 12px;">
 				                        <s:form action="saveAppoinmentNotAvailableSlot" id="notavailable_form" theme="simple" validate="True">
@@ -120,11 +128,11 @@
 											<td>Client</td>
 											<td align="center">:</td>
 											<s:hidden name="clientId" id = "clientId" ></s:hidden>  
-											<td><s:textfield name="client" id = "client" readonly="true" size="18" onchange="setTreatmentEpisode()"></s:textfield><!-- 
-											 <input type="button" value = "Search" class = "buttons" onclick="showAllPatientPopUp();">
-											-->
-												 <a href="Client" style="text-decoration: none" target="blank" onclick="window.open(this.href, 'mywin',
-											'left=20,top=20,width=800,height=500,toolbar=1,resizable=0'); return false;"> <input type="button" value = "Search" class = "buttons"></a>
+											<td><s:textfield name="client" id = "client" readonly="true" size="18" onchange="setTreatmentEpisode()"></s:textfield> 
+											 <input type="button" value = "Search" class = "buttons" onclick="showAnotherPopup();">
+											
+												<!--  <a href="Client" style="text-decoration: none" target="blank" onclick="window.open(this.href, 'mywin',
+											'left=20,top=20,width=800,height=500,toolbar=1,resizable=0'); return false;"> <input type="button" value = "Search" class = "buttons"></a> -->
 											</td>
 										</tr>
 										
@@ -416,8 +424,26 @@
 					<div class="mddiv"></div>
 					
 			</div>
+					</td>
+					
+					<td id="anothertd" valign="top" style="display:none;">
+					<div id="closediv" class="close" style="display: none;"></div>
+							<span class="ecs_tooltip">Press Esc to close <span class="arrow" ></span></span>
+						<div id="addPatientDiv" style="display:none;">
+							<%@ include file="/diarymanagement/pages/addPatient.jsp" %>
+						</div>
+						<div id="clientSearchDiv" style="display:none;overflow: auto;" >
+							<%@ include file="/diarymanagement/pages/allClient.jsp" %>
+						</div>
+						
+					</td>
+					
+				</tr>
+			</table>
+			
+			
+			
+			
 			
 			</div>	
-			
-			
-			</div>	
+		</div>	

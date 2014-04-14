@@ -453,6 +453,11 @@ padding:6px 6px 6px 12px;
 	width: 40%;
 		
 }
+
+#dashboardDiv {
+z-index: 1000;
+width: 40%;
+}
  
 
 #background{

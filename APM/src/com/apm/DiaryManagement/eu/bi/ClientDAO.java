@@ -43,6 +43,8 @@ public interface ClientDAO {
 
 	ArrayList<Client> getAllPatient(Pagination pagination);
 
+	int savePatientDetails(Client client);
+
 
 
 	

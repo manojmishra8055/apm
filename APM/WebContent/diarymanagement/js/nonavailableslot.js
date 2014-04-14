@@ -38,7 +38,7 @@ jQuery.fn.center = function () {
 	
 
 $(document).ready(function(){
-	$("#previewDiv").hide();
+	$("#dashboardDiv").hide();
 	document.getElementById('closediv').style.display = '';
 	
 });		
@@ -698,9 +698,10 @@ function getCalDate(caldate,month,year){
 
 
 function setClientName(name,id,type,typeName){
-		window.opener.setValue(name,id,type,typeName);
-		window.close();
-		return false;
+//		window.opener.setValue(name,id,type,typeName);
+//		window.close();
+//		return false;
+	setValue(name,id,type,typeName);
         
 		
 }
@@ -715,56 +716,17 @@ function setValue(name,id,type,typeName){
 		document.cookie = "cookieUserName=" + name;
 		document.cookie = "cookieClientId=" + id;
 		
-		//document.getElementById('allPatientDiv').style.display = 'none';
-		//document.getElementById('appointment').style.display = '';
+		$(document.getElementById('dashboardDiv')).css('width', '40%');
+		document.getElementById('anothertd').style.display = 'none';
+		document.getElementById('clientSearchDiv').style.display = 'none';
+		
+		document.getElementById('appointment').style.display = '';
 		
 		document.getElementById("client").value = name;
 		
 		setTreatmentEpisode();
 		
 		
-}
-function showAllPatientPopUp(){
-
-var url = "Client";
-
-
-
-if (window.XMLHttpRequest) {
-		req = new XMLHttpRequest();
-	}
-	else if (window.ActiveXObject) {
-		isIE = true;
-		req = new ActiveXObject("Microsoft.XMLHTTP");
-	}   
-               
-    req.onreadystatechange = showAllPatientPopUpRequest;
-    req.open("GET", url, true); 
-              
-    req.send(null);
-
-}
-function showAllPatientPopUpRequest(){
-if (req.readyState == 4) {
-		if (req.status == 200) {
-		
-			document.getElementById("allPatient").innerHTML = req.responseText;
-         	document.getElementById('allPatientDiv').style.display = '';
-			document.getElementById('appointment').style.display = '';
-			document.getElementById('addPatientDiv').style.display = 'none';
-			
-         }
-	}
-}
-
-function addPatient(){
-			//alert("M there");
-			document.getElementById('addPatientDiv').style.display = '';
-			document.getElementById('allPatientDiv').style.display = 'none';
-			document.getElementById('appointment').style.display = 'none';
-			
-	
-
 }
 function setTreatmentEpisode(){
 	

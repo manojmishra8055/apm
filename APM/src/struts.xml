@@ -117,7 +117,7 @@
 	        <result name="save" type="redirect">manageClient</result>
 	        <result name="editClientPage" type="tiles">editClientPage</result>
 	        <result name="updateClient" type="redirect">Client</result>
-            <result name="deletePatient" type="redirect">Client</result>
+            <result name="deletePatient" type="redirect">manageClient</result>
             	 <!-- 19th march unnati -->
             <result name="thirdPartyLog" type="tiles">thirdPartyLogPage</result>
             <result name="updateThirdPartyDetails" type="tiles">updateThirdPartyDetailsPage</result>

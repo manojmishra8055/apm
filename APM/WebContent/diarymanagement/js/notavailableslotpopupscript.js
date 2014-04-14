@@ -38,7 +38,7 @@ jQuery.fn.center = function () {
 	};
 	
 $(document).ready(function(){
-	$("#previewDiv").hide();
+	$("#dashboardDiv").hide();
 	
 
 });	
@@ -568,7 +568,7 @@ jQuery(function($) {
 			
 			
 			$("#background").css({"opacity" : "0.7"}).fadeIn("slow");
-			$("#previewDiv").center().fadeIn("slow");	
+			$("#dashboardDiv").center().fadeIn("slow");	
 			
 			//$("#previewDiv").fadeIn(0500); // fadein popup div
 			
@@ -581,8 +581,12 @@ jQuery(function($) {
 	function disablePopup() {
 		if(popupStatus == 1) { // if value is 1, close popup
 			$("#background").fadeOut("slow");
-			$("#previewDiv").hide();
+			$("#dashboardDiv").hide();
 			popupStatus = 0;  // and set value to 0
+			
+			$(document.getElementById('dashboardDiv')).css('width', '40%');
+			document.getElementById('anothertd').style.display = 'none';
+			document.getElementById('clientSearchDiv').style.display = 'none';
 		}
 	}
 	/************** end: functions. **************/
@@ -709,7 +713,7 @@ jQuery(function($) {
 	};
 	
 	$.fn.cancelSlot = function(){
-		
+	
 		disablePopup(); 
 	
 	};
