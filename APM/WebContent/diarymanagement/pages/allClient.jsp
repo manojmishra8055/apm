@@ -20,6 +20,7 @@
 		<input type="button" value="Add" class="buttons" onclick="addPatient()">
 		<input type= "text" name="searchText" id = "searchText" placeholder="Search by Name" size="20" class="Search" >
 		<input type="submit" value="Go" class="buttons" onclick = "searchPatient()"/>
+		<input type="button" value="Close" class="buttons" onclick = "closeSearchPatient()"/>
 		</div>	
 					<div class="form_elements">	
 						<input type="hidden" id = "client" name ="client" > 

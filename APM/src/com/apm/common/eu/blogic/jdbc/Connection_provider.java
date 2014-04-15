@@ -15,7 +15,7 @@ public static Connection getconnection() throws SQLException
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		//con=DriverManager.getConnection("jdbc:mysql://apmdbinstance.ckb24wbakifq.us-east-1.rds.amazonaws.com:3306/apm","root","mysql1234");
-		con=DriverManager.getConnection("jdbc:mysql://192.168.0.123:3306/apm","root","mysql");
+		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/apm","root","mysql");
 		System.out.println("done");
 	} catch (ClassNotFoundException e) {
 		e.printStackTrace();

@@ -132,6 +132,7 @@
 					<tr>
 					<td colspan="3">
 					<input type = "button" value="Save" onclick = "savePatient()" class="buttons">
+					<input type = "button" value="Cancel" onclick = "cancelAddPatient()" class="buttons">
 					</td>
 					</tr>
 					</table>

@@ -128,3 +128,18 @@ function savePatient(){
 	         }
 		}
 	}
+	
+	function cancelAddPatient(){
+		$(document.getElementById('dashboardDiv')).css('width', '80%');
+		document.getElementById('anothertd').style.display = '';
+		document.getElementById('clientSearchDiv').style.display = '';
+		document.getElementById('addPatientDiv').style.display = 'none';
+	}
+function closeSearchPatient(){
+	$(document.getElementById('dashboardDiv')).css('width', '40%');
+	document.getElementById('anothertd').style.display = 'none';
+	document.getElementById('clientSearchDiv').style.display = 'none';
+	
+	document.getElementById('appointment').style.display = '';
+	
+}
