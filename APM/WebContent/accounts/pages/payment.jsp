@@ -10,7 +10,7 @@
 
 <script type="text/javascript" src="diarymanagement/js/paynow.js"></script>
 
-	<h2 class="title" style="margin-left: 46px">Raise hello world Invoice for <s:property value="client"/></h2><br><br>
+	<h2 class="title" style="margin-left: 46px">Raise xxcvcbcbv Invoice for <s:property value="client"/></h2><br><br>
 
 <div id="login_main" class="main_layout_content">
 	<div id="login" class="block_div">
