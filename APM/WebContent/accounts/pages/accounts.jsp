@@ -1,7 +1,10 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 
-<script type="text/javascript" src="diarymanagement/js/nonavailableslot.js"></script>
-<script type="text/javascript" src="accounts/js/accounts.js"></script>
+<sc
+ipt type="text/javascript" src="0
+++10iarymanagement/js/nonavailableslot.js"></script>
++<script type="text/javascript" sr+19c="accounts/js/accounts.js"></script>
++
 
 <div id="login_main" class="main_layout_content">
 <h2 class="title" style="margin-right: 8px; margin-left: -17px">Today gfhgf  Accounts</h2>
