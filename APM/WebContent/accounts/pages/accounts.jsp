@@ -7,7 +7,7 @@ ipt type="text/javascript" src="0
 +
 
 <div id="login_main" class="main_layout_content">
-<h2 class="title" style="margin-right: 8px; margin-left: -17px">Today gfhgf  Accounts</h2>
+<h2 class="title" style="margin-right: 8px; margin-left: -17px">Today hello  Accounts</h2>
 	<div id="login" class="block_div">
 		<span class="error"><s:actionerror id="server_side_error"/></span>
 		<s:form action="Accounts" id="category_form" theme="simple"> 
